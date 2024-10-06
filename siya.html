@@ -1,0 +1,304 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Data</title>
+
+<style>
+
+
+body {
+        font-family: Arial, sans-serif; /* Change the font */
+        background-color: #f9f9f9; /* Light background color */
+    }
+    table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse; /* Ensure no double borders */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a light shadow */
+    }
+    th, td {
+        padding: 12px 15px; /* Add padding */
+        text-align: left;
+    }
+    th {
+        background-color: #ccc; /* Header background color */
+        color: #333; /* Header text color */
+    }
+    td {
+        background-color: #fff; /* Cells background color */
+        border-bottom: 1px solid #ddd; /* Border for rows */
+    }
+    tr:hover {
+        background-color: #f1f1f1; /* Highlight row on hover */
+    }
+    td.normal {
+        font-size: 14px; /* Font size for table cells */
+    }
+    td.medium {
+        font-weight: bold;
+        font-size: 16px; /* Font size for headers */
+    }
+    .heading{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: bold;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 28px;
+        margin-top: 15px;
+        color: rgb(17, 17, 27);
+    }
+
+.{
+    height:30px;
+
+    color: rgb(16, 16, 32);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: solid;
+    background-color: rgb(237, 237, 250);
+}
+.buttons{
+    background-color: rgb(34, 82, 20);
+    color: #ffffff;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 40px;
+    width:80px;
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+  
+ } 
+ .buttons:hover{
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+   
+    transform:box-shadow 0.9s ease; 
+ }
+.buttons:active{
+    background-color: rgb(103, 187, 121);
+}
+</style>
+<script>
+ function addRow() {
+        let criteria = document.getElementById("criteriaInput").value;
+        let info = document.getElementById("infoInput").value;
+        
+        if (criteria.trim() === "" || info.trim() === "") {
+            alert("Both criteria and info fields must be filled out.");
+            return;
+        }
+
+        let table = document.getElementById("dataTable"); 
+        let rowCount = table.rows.length;
+
+        let newRow = table.insertRow(rowCount);
+
+        let cell1 = newRow.insertCell(0);
+        let cell2 = newRow.insertCell(1);
+        let cell3 = newRow.insertCell(2);
+        let cell4 = newRow.insertCell(3);
+
+        cell1.classList.add('normal');
+        cell2.classList.add('normal');
+        cell3.classList.add('normal');
+
+        // Auto-incrementing ID based on the number of rows
+        cell1.innerHTML = rowCount;
+        cell2.innerHTML = criteria;
+        cell3.innerHTML = info;
+        cell4.innerHTML = "<button class='delete-btn' onclick='deleteRow(this)'>Delete</button>";
+
+        // Clear the input fields after adding the row
+        document.getElementById("criteriaInput").value = "";
+        document.getElementById("infoInput").value = "";
+    }
+
+// Function to delete a row
+function deleteRow(btn) {
+    let row = btn.parentNode.parentNode;
+    row.parentNode.removeChild(row); // Remove the row from the table
+    updateIds(); // Update IDs after deletion
+}
+
+// Function to update ID numbers after deletion
+function updateIds() {
+    let table = document.getElementById("dataTable");
+    for (let i = 1; i < table.rows.length; i++) {
+        table.rows[i].cells[0].innerHTML = i; // Reset the ID to match row number
+    }
+}
+</script>
+
+</head>
+
+<body>
+<p class="heading">My carriculum Vitae</p>
+
+<a href="index.html" class="buttons">Home</a>
+<table id="dataTable" border="1">
+<tr>
+<td bgcolor=silver class='medium'>id</td>
+<td bgcolor=silver class='medium'>criteria</td>
+<td bgcolor=silver class='medium'>info</td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>1</td>
+<td class='normal' valign='top'>Full names</td>
+<td class='normal' valign='top'>Siyabonga Senzi Ntuli</td>
+<td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>2</td>
+<td class='normal' valign='top'>Address</td>
+<td class='normal' valign='top'>129 Skolong Section,Ga-Motle</td>
+<td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>3</td>
+<td class='normal' valign='top'>City & postal code</td>
+<td class='normal' valign='top'>Pretoria 0407</td>
+<td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>4</td>
+<td class='normal' valign='top'>Phone number</td>
+<td class='normal' valign='top'>076 229 6055</td>
+<td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>5</td>
+<td class='normal' valign='top'>Email Address</td>
+<td class='normal' valign='top'>siyanyuli44@gmail.com</td>
+<td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>6</td>
+<td class='normal' valign='top'>Personal Information</td>
+<td class='normal' valign='top'>I Siyabonga Senzi Ntuli am a web developer.I grew up in Motla in Gauteng near Sosha,I can say my experience with
+    HTML,CSS can award me an advatage for any work involving webpages.My passion for
+    coding allows me continous learning not only in coding but also in the outside world.Ensuring I
+    diliver solutions always even though they might not always be simple is one of my asset in my bucket list.</td>
+    <td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>7</td>
+<td class='normal' valign='top'>Technical Skills</td>
+<td class='normal' valign='top'>CSS,HTML,C++,python</td>
+<td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>8</td>
+<td class='normal' valign='top'>Tools</td>
+<td class='normal' valign='top'>Visual Studio code,Code::Blocks</td>
+<td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>9</td>
+<td class='normal' valign='top'>Database Manangement</td>
+<td class='normal' valign='top'>mySQL</td>
+<td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>10</td>
+<td class='normal' valign='top'>Project_1</td>
+<td class='normal' valign='top'>Developed my personal website</td>
+<td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>11</td>
+<td class='normal' valign='top'>Project_1 information</td>
+<td class='normal' valign='top'>my personal website,2024</td>
+<td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>12</td>
+<td class='normal' valign='top'>Project_2</td>
+<td class='normal' valign='top'>Developed a lirary for borrowing and returning books online</td>
+<td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>13</td>
+<td class='normal' valign='top'>Project_2 information</td>
+<td class='normal' valign='top'>for group assessment</td>
+<td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>14</td>
+<td class='normal' valign='top'>Experience_1</td>
+<td class='normal' valign='top'>Front End Developer at e-library</td>
+<td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>15</td>
+<td class='normal' valign='top'>Experience_1 description</td>
+<td class='normal' valign='top'>Pretoria from 2016/03/05 to 2022/01/17 </td>
+<td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>16</td>
+<td class='normal' valign='top'>Experience_2</td>
+<td class='normal' valign='top'>Web designer</td>
+<td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>17</td>
+<td class='normal' valign='top'>Experience_2 decription</td>
+<td class='normal' valign='top'>from 2022/06/04 to 2024/03/04</td>
+<td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>18</td>
+<td class='normal' valign='top'>HighSchool</td>
+<td class='normal' valign='top'>MMankala Technical School</td>
+<td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>19</td>
+<td class='normal' valign='top'>Higher education Institution</td>
+<td class='normal' valign='top'>University Of Limpopo</td>
+<td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>20</td>
+<td class='normal' valign='top'>Degree</td>
+<td class='normal' valign='top'>Bsc in Mathematical and Computer science</td>
+<td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+
+<tr>
+<td class='normal' valign='top'>21</td>
+<td class='normal' valign='top'>Majors</td>
+<td class='normal' valign='top'>Statistics and Computer Science</td>
+<td><button onclick='deleteRow(this)'>Delete</button></td>
+</tr>
+</table>
+
+<div class="controls">
+   
+    <input type="text" id="criteriaInput" placeholder="Enter criteria">
+    <input type="text" id="infoInput" placeholder="Enter info">
+    <button onclick="addRow()">Add Information</button>
+</div>
+
+</body></html>
